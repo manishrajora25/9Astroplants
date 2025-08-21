@@ -32,6 +32,7 @@ authRouter.post('/refresh', refresh);
 authRouter.post('/logout', logout);
 
 authRouter.get('/google', googleAuth);
-authRouter.get('/google/callback', googleCallback);
+// Accept POST from frontend code-exchange flow
+authRouter.post('/google/callback', googleCallback);
 
 export default authRouter;

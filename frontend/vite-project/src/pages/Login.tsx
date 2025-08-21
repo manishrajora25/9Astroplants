@@ -153,7 +153,7 @@ function Login() {
       });
       if (response.status === 200) {
         alert("Login Successfull");
-        navigate("/home");
+        navigate("/Home");
       }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

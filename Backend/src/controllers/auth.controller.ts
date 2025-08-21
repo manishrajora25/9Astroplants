@@ -197,6 +197,7 @@ export const googleCallback = async (req: Request, res: Response) => {
   try {
     console.log(req.body)
     const { code, redirectUri } = req.body;
+console.log(req.body);
 
     if (!code || !redirectUri) {
       return res.status(400).json({ message: "Missing code or redirectUri" });
@@ -224,12 +225,6 @@ export const googleCallback = async (req: Request, res: Response) => {
   const user = await createLocalUser({ email,password,name});
       const token = buildAuthTokens({ id: user.id, email: user.email });
     setRefreshCookie(res, token.refreshToken);
-    // 3️⃣ Apne DB me user check/create/update
-    // const user = await User.findOneAndUpdate({ email }, { name, picture }, { upsert: true, new: true });
-
-    // 4️⃣ Apna JWT tokens banao
-    // const tokens = buildAuthTokens({ id, email });
-    // setRefreshCookie(res, tokens.refreshToken);
 
     return res.status(201).json({
       accessToken: token.accessToken,
